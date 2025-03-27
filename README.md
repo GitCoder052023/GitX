@@ -110,6 +110,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Git project for inspiration
 - Tailwind CSS for the styling framework
 - Alpine.js for the interactive components
