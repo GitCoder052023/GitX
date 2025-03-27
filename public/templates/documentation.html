@@ -18,7 +18,7 @@
             margin-bottom: 0.75rem;
             counter-increment: list-counter;
         }
-        
+
         .prose ol li::before {
             content: counter(list-counter);
             position: absolute;
@@ -34,13 +34,13 @@
             font-size: 0.875rem;
             font-weight: 600;
         }
-        
+
         .prose ul li {
             position: relative;
             padding-left: 1.75rem;
             margin-bottom: 0.75rem;
         }
-        
+
         .prose ul li::before {
             content: "";
             position: absolute;
@@ -51,13 +51,14 @@
             background-color: #f97316;
             border-radius: 50%;
         }
-        
-        .prose ol, .prose ul {
+
+        .prose ol,
+        .prose ul {
             padding-left: 0.5rem;
             margin-top: 1rem;
             margin-bottom: 1.5rem;
         }
-        
+
         code {
             background-color: #f3f4f6;
             padding: 0.2rem 0.4rem;
@@ -161,7 +162,7 @@
             <div class="text-center">
                 <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
                     <span class="block text-orange-600">Comprehensive Git Documentation Guide</span>
-                </h1>                
+                </h1>
                 <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
                     Comprehensive guides, references, and resources to help you master Git.
                 </p>
@@ -268,7 +269,8 @@
                                 <li class="mb-1">For macOS: Use Homebrew with <code>brew install git</code> or download
                                     the installer.</li>
                                 <li class="mb-1">For Linux: Use your distribution's package manager (e.g.,
-                                    <code>apt-get install git</code> for Debian/Ubuntu).</li>
+                                    <code>apt-get install git</code> for Debian/Ubuntu).
+                                </li>
                             </ul>
 
                             <h3 class="text-2xl text-gray-800 mb-4">Initial Configuration</h3>
@@ -279,10 +281,12 @@ git config --global user.email "your.email@example.com"</code></pre>
                             <h3 class="text-2xl text-gray-800 mb-4">Creating Your First Repository</h3>
                             <p class="mb-2">To start tracking a project with Git:</p>
                             <ol class="mb-2">
-                                <li class="mb-1">Navigate to your project directory in the terminal or command prompt.</li>
+                                <li class="mb-1">Navigate to your project directory in the terminal or command prompt.
+                                </li>
                                 <li class="mb-1">Initialize a new Git repository with <code>git init</code>.</li>
                                 <li class="mb-1">Add files to the staging area with <code>git add .</code>.</li>
-                                <li class="mb-1">Commit your changes with <code>git commit -m "Initial commit"</code>.</li>
+                                <li class="mb-1">Commit your changes with <code>git commit -m "Initial commit"</code>.
+                                </li>
                             </ol>
 
                             <div class="bg-blue-50 border-l-4 border-blue-400 p-4 my-6">
@@ -327,9 +331,11 @@ git config --global user.email "your.email@example.com"</code></pre>
                             <h3 class="text-2xl text-gray-800 mb-4">The Three States</h3>
                             <p class="mb-2">Git has three main states that your files can reside in:</p>
                             <ul class="mb-2">
-                                <li class="mb-1"><strong>Modified:</strong> You've changed the file but haven't committed it yet.
+                                <li class="mb-1"><strong>Modified:</strong> You've changed the file but haven't
+                                    committed it yet.
                                 </li class="mb-1">
-                                <li class="mb-1"><strong>Staged:</strong> You've marked a modified file to go into your next commit.
+                                <li class="mb-1"><strong>Staged:</strong> You've marked a modified file to go into your
+                                    next commit.
                                 </li class="mb-1">
                                 <li><strong>Committed:</strong> The data is safely stored in your local database.</li>
                             </ul>
@@ -338,7 +344,8 @@ git config --global user.email "your.email@example.com"</code></pre>
                             <ol class="mb-2">
                                 <li class="mb-1">Modify files in your working directory.</li>
                                 <li class="mb-1">Stage the files, adding snapshots to your staging area.</li>
-                                <li class="mb-1">Commit the changes, which stores the snapshots permanently in your Git repository.
+                                <li class="mb-1">Commit the changes, which stores the snapshots permanently in your Git
+                                    repository.
                                 </li>
                             </ol>
 
@@ -356,11 +363,13 @@ git add .          # Add all files</code></pre>
                             <h4 class="text-2xl text-gray-600 mb-3">Committing Changes</h4>
                             <pre
                                 class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git commit -m "Descriptive message"</code></pre>
-                            <p class="mb-2">Records the changes in the repository with a message describing what was changed.</p>
+                            <p class="mb-2">Records the changes in the repository with a message describing what was
+                                changed.</p>
 
                             <h4 class="text-2xl text-gray-600 mb-3">Viewing History</h4>
                             <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git log</code></pre>
-                            <p class="mb-2">Shows a log of all commits, with details like author, date, and commit message.</p>
+                            <p class="mb-2">Shows a log of all commits, with details like author, date, and commit
+                                message.</p>
 
                             <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-6">
                                 <div class="flex">
@@ -433,7 +442,8 @@ git merge feature-branch # Merge the feature branch into main</code></pre>
                                 <li class="mb-1">Git will mark the conflicted files</li>
                                 <li class="mb-1">Open the files and look for conflict markers
                                     (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, and
-                                    <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>)</li>
+                                    <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>)
+                                </li>
                                 <li class="mb-1">Edit the files to resolve the conflicts</li>
                                 <li class="mb-1">Add the resolved files with <code>git add</code></li>
                                 <li class="mb-1">Complete the merge with <code>git commit</code></li>
@@ -602,13 +612,15 @@ git submodule update --init --recursive  # Initialize and update submodules</cod
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git config</code></td>
+                                                <code>git config</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Configure Git settings</td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git help</code></td>
+                                                <code>git help</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Display help information</td>
                                         </tr>
 
@@ -620,14 +632,16 @@ git submodule update --init --recursive  # Initialize and update submodules</cod
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git init</code></td>
+                                                <code>git init</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Create a new local repository
                                             </td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git clone</code></td>
+                                                <code>git clone</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Clone a repository</td>
                                         </tr>
 
@@ -639,39 +653,45 @@ git submodule update --init --recursive  # Initialize and update submodules</cod
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git add</code></td>
+                                                <code>git add</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Add files to staging area</td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git status</code></td>
+                                                <code>git status</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Check repository status</td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git commit</code></td>
+                                                <code>git commit</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Commit changes</td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git reset</code></td>
+                                                <code>git reset</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Reset staging area to match most
                                                 recent commit</td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git rm</code></td>
+                                                <code>git rm</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Remove files from working
                                                 directory</td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git mv</code></td>
+                                                <code>git mv</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Move or rename files</td>
                                         </tr>
 
@@ -683,34 +703,39 @@ git submodule update --init --recursive  # Initialize and update submodules</cod
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git branch</code></td>
+                                                <code>git branch</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">List, create, or delete branches
                                             </td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git checkout</code></td>
+                                                <code>git checkout</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Switch branches or restore files
                                             </td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git merge</code></td>
+                                                <code>git merge</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Merge branches</td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git rebase</code></td>
+                                                <code>git rebase</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Reapply commits on top of
                                                 another base</td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git tag</code></td>
+                                                <code>git tag</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Create, list, delete, or verify
                                                 tags</td>
                                         </tr>
@@ -723,28 +748,32 @@ git submodule update --init --recursive  # Initialize and update submodules</cod
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git fetch</code></td>
+                                                <code>git fetch</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Download objects and refs from
                                                 another repository</td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git pull</code></td>
+                                                <code>git pull</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Fetch and integrate with another
                                                 repository or branch</td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git push</code></td>
+                                                <code>git push</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Update remote refs along with
                                                 associated objects</td>
                                         </tr>
                                         <tr>
                                             <td
                                                 class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                                                <code>git remote</code></td>
+                                                <code>git remote</code>
+                                            </td>
                                             <td class="px-3 py-2 text-sm text-gray-500">Manage remote repositories</td>
                                         </tr>
                                     </tbody>
@@ -754,16 +783,6 @@ git submodule update --init --recursive  # Initialize and update submodules</cod
                             <p class="mt-6">For a complete reference of all Git commands, visit the <a
                                     href="https://git-scm.com/docs"
                                     class="text-orange-600 hover:text-orange-500">official Git documentation</a>.</p>
-
-                            <a href="#videos" class="inline-flex items-center text-orange-600 hover:text-orange-500">
-                                Continue to Video Tutorials
-                                <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                    fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </a>
                         </div>
                     </section>
 

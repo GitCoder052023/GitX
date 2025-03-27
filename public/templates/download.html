@@ -100,6 +100,62 @@
         </div>
     </nav>
 
+    <div class="bg-orange-50 border-b border-orange-100" x-data="{ showBanner: true }" x-show="showBanner">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 bg-orange-100 rounded-full p-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-600" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <div class="ml-4">
+                                <h2 class="text-lg font-medium text-gray-900" id="detected-os-text">
+                                    We detected your OS: <span id="detected-os-name"
+                                        class="font-semibold">Detecting...</span>
+                                </h2>
+                                <p class="text-sm text-gray-500">
+                                    Click the button below to download Git for your system automatically.
+                                </p>
+                            </div>
+                        </div>
+                        <button @click="showBanner = false"
+                            class="flex-shrink-0 ml-4 p-1 rounded-full hover:bg-gray-100">
+                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="mt-5 flex justify-center">
+                        <button id="auto-download-btn"
+                            class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+                            <svg class="mr-2 h-5 w-5 animate-spin" id="download-spinner"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                </path>
+                            </svg>
+                            <span id="auto-download-text">Download Git</span>
+                        </button>
+                    </div>
+                    <div class="mt-3 text-center text-sm text-gray-500">
+                        If we detected your OS incorrectly, please use the <a href="#manual-download"
+                            class="text-orange-600 hover:text-orange-500">manual download options</a> below.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Download Hero Section -->
     <div class="bg-white">
         <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
@@ -118,55 +174,129 @@
     </div>
 
     <!-- Download Options -->
-    <div class="container mx-auto px-4 py-12">
+    <div class="container mx-auto px-4 py-12" id="manual-download">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Manual Download Options</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8" x-data>
             <!-- Windows Card -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-                x-data="{ showDetails: false }">
-                <div class="p-6">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+                x-data="{ showDetails: true }">
+                <div class="bg-gradient-to-r from-blue-50 to-white p-6 border-b border-gray-100">
                     <div class="flex items-center mb-4">
-                        <div class="mr-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
-                                viewBox="0 0 48 48">
+                        <div class="mr-4 bg-blue-100 p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64"
+                                viewBox="0 0 48 48" class="text-blue-600">
                                 <path fill="#00b0ff"
                                     d="M20 25.026L5.011 25 5.012 37.744 20 39.818zM22 25.03L22 40.095 42.995 43 43 25.066zM20 8.256L5 10.38 5.014 23 20 23zM22 7.973L22 23 42.995 23 42.995 5z">
                                 </path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Windows</h3>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Windows</h3>
+                            <p class="text-sm text-gray-500">Latest version: 2.40.1</p>
+                        </div>
                     </div>
 
-                    <div class="space-x-2 mb-4">
-                        <a href="#"
-                            id="windows-download"
-                            class="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition">
-                            Download for Windows
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <a href="#" id="windows-download"
+                            class="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition shadow-md hover:shadow-lg flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Download for Windows (64-bit)
                         </a>
                         <button @click="showDetails = !showDetails"
-                            class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-100 transition">
+                            class="flex items-center justify-center border border-gray-300 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-100 transition">
                             <span x-text="showDetails ? 'Hide Details' : 'Show Details'"></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1"
+                                :class="{'rotate-180': !showDetails}" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
                         </button>
                     </div>
+                </div>
 
-                    <div x-show="showDetails" x-transition class="text-sm text-gray-600">
-                        <p class="mb-2">Latest version: 2.40.1</p>
-                        <p class="mb-2">File size: ~50 MB</p>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li>Git BASH with command line</li>
-                            <li>Graphical Git interface</li>
-                            <li>Windows Explorer integration</li>
+                <div x-show="showDetails" x-transition.duration.250ms class="p-6 bg-white">
+                    <div class="text-sm text-gray-600">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <span>File size: ~50 MB</span>
+                        </div>
+                        <ul class="list-none space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Git BASH with command line
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Graphical Git interface
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Windows Explorer integration
+                            </li>
                         </ul>
+
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <h4 class="font-medium text-gray-900 mb-3 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                                </svg>
+                                Alternative Downloads:
+                            </h4>
+                            <div class="space-y-3 pl-7">
+                                <a href="#" id="windows-32bit-download"
+                                    class="block text-blue-600 hover:text-blue-800 hover:underline flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    Download 32-bit Windows version
+                                </a>
+                                <a href="#" id="windows-portable-download"
+                                    class="block text-blue-600 hover:text-blue-800 hover:underline flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    Download Portable Git (no installer)
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- macOS Card -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-                x-data="{ showDetails: false }">
-                <div class="p-6">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+                x-data="{ showDetails: true }">
+                <div class="bg-gradient-to-r from-gray-50 to-white p-6 border-b border-gray-100">
                     <div class="flex items-center mb-4">
-                        <div class="mr-4">
+                        <div class="mr-4 bg-gray-100 p-3 rounded-full">
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
                                 viewBox="0 0 48 48">
                                 <defs>
@@ -217,427 +347,722 @@
                                 </g>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">macOS</h3>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">macOS</h3>
+                            <p class="text-sm text-gray-500">Latest version: 2.40.1</p>
+                        </div>
                     </div>
 
-                    <div class="space-x-2 mb-4">
-                        <a href="#"
-                            id="macos-download"
-                            class="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition">
-                            Download for macOS
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <a href="#" id="macos-download"
+                            class="flex-1 bg-gradient-to-r from-gray-700 to-gray-900 text-white px-4 py-3 rounded-lg hover:from-gray-800 hover:to-black transition shadow-md hover:shadow-lg flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Download for macOS (Intel)
                         </a>
                         <button @click="showDetails = !showDetails"
-                            class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-100 transition">
+                            class="flex items-center justify-center border border-gray-300 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-100 transition">
                             <span x-text="showDetails ? 'Hide Details' : 'Show Details'"></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1"
+                                :class="{'rotate-180': !showDetails}" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
                         </button>
                     </div>
+                </div>
 
-                    <div x-show="showDetails" x-transition class="text-sm text-gray-600">
-                        <p class="mb-2">Latest version: 2.40.1</p>
-                        <p class="mb-2">File size: ~25 MB</p>
-                        <ul class="list-disc pl-5 space-y-1">
-                            <li>Homebrew: <code>brew install git</code></li>
-                            <li>MacPorts: <code>port install git</code></li>
-                            <li>Direct installer package</li>
+                <div x-show="showDetails" x-transition.duration.250ms class="p-6 bg-white">
+                    <div class="text-sm text-gray-600">
+                        <div class="flex items-center mb-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 mr-2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <span>File size: ~25 MB</span>
+                        </div>
+                        <ul class="list-none space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Homebrew: <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">brew install git</code>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                MacPorts: <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">port install git</code>
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                                Direct installer package
+                            </li>
                         </ul>
+
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <h4 class="font-medium text-gray-900 mb-3 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                                </svg>
+                                Alternative Downloads:
+                            </h4>
+                            <div class="space-y-3 pl-7">
+                                <a href="#" id="macos-arm-download"
+                                    class="block text-gray-600 hover:text-gray-800 hover:underline flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    Download for Apple Silicon (M1/M2)
+                                </a>
+                                <a href="#" id="macos-legacy-download"
+                                    class="block text-gray-600 hover:text-gray-800 hover:underline flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    Download for older macOS (10.9 and below)
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Linux Card -->
-            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-                x-data="{ showDetails: false }">
-                <div class="p-6">
+            <div class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+                x-data="{ showDetails: true }">
+                <div class="bg-gradient-to-r from-orange-50 to-white p-6 border-b border-gray-100">
                     <div class="flex items-center mb-4">
-                        <div class="mr-4">
-                            <img width="100" height="100"
+                        <div class="mr-4 bg-orange-100 p-3 rounded-full">
+                            <img width="96" height="96"
                                 src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/96/external-linux-a-family-of-open-source-unix-like-operating-systems-based-on-the-linux-kernel-logo-color-tal-revivo.png"
                                 alt="external-linux-a-family-of-open-source-unix-like-operating-systems-based-on-the-linux-kernel-logo-color-tal-revivo" />
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Linux</h3>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800">Linux</h3>
+                            <p class="text-sm text-gray-500">Latest version: 2.40.1</p>
+                        </div>
                     </div>
 
-                    <div class="space-x-2 mb-4">
+                    <div class="flex flex-wrap gap-2 mb-4">
                         <button @click="showDetails = !showDetails"
-                            class="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition">
+                            class="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-3 rounded-lg hover:from-orange-600 hover:to-orange-700 transition shadow-md hover:shadow-lg flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
                             <span x-text="showDetails ? 'Hide Instructions' : 'View Instructions'"></span>
                         </button>
                     </div>
+                </div>
 
-                    <div x-show="showDetails" x-transition class="text-sm text-gray-600">
-                        <p class="mb-2">Latest version: 2.40.1</p>
-                        <div class="space-y-3">
-                            <div>
-                                <p class="font-semibold">Debian/Ubuntu:</p>
-                                <pre class="bg-gray-100 p-2 rounded-md"><code>sudo apt-get update
+                <div x-show="showDetails" x-transition.duration.250ms class="p-6 bg-white">
+                    <div class="text-sm text-gray-600">
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="font-semibold text-gray-700 mb-2 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 mr-2"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Debian/Ubuntu:
+                                </p>
+                                <pre class="bg-gray-800 text-gray-100 p-3 rounded-md text-xs"><code>sudo apt-get update
 sudo apt-get install git</code></pre>
                             </div>
-                            <div>
-                                <p class="font-semibold">Fedora:</p>
-                                <pre class="bg-gray-100 p-2 rounded-md"><code>sudo dnf install git</code></pre>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="font-semibold text-gray-700 mb-2 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 mr-2"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Fedora:
+                                </p>
+                                <pre
+                                    class="bg-gray-800 text-gray-100 p-3 rounded-md text-xs"><code>sudo dnf install git</code></pre>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="font-semibold text-gray-700 mb-2 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 mr-2"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Arch Linux:
+                                </p>
+                                <pre
+                                    class="bg-gray-800 text-gray-100 p-3 rounded-md text-xs"><code>sudo pacman -S git</code></pre>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="font-semibold text-gray-700 mb-2 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 mr-2"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    openSUSE:
+                                </p>
+                                <pre
+                                    class="bg-gray-800 text-gray-100 p-3 rounded-md text-xs"><code>sudo zypper install git</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-gray-200">
+                            <h4 class="font-medium text-gray-900 mb-3 flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500 mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                                </svg>
+                                Alternative Downloads:
+                            </h4>
+                            <div class="space-y-3 pl-7">
+                                <a href="https://github.com/git/git/releases/download/v2.40.1/git-2.40.1.tar.gz"
+                                    class="block text-orange-600 hover:text-orange-800 hover:underline flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    Download source tarball (.tar.gz)
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Source Code Section -->
-    <div class="bg-gray-50 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:text-center">
-                <h2 class="text-base text-orange-600 font-semibold tracking-wide uppercase">Source Code</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                    Build from source
-                </p>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                    For those who want to build Git from source or contribute to its development.
-                </p>
-            </div>
-            <div class="mt-10 bg-white shadow overflow-hidden rounded-lg">
-                <div class="px-4 py-5 sm:p-6">
-                    <h3 class="text-lg leading-6 font-medium text-gray-900">Clone the repository</h3>
-                    <div class="mt-2 max-w-xl text-sm text-gray-500">
-                        <p>Clone the Git repository to get the latest source code:</p>
-                    </div>
-                    <div class="mt-3">
-                        <pre
-                            class="bg-gray-100 p-3 rounded-md overflow-x-auto"><code>git clone https://github.com/git/git.git</code></pre>
-                    </div>
-                    <div class="mt-5">
-                        <a href="https://github.com/git/git"
-                            class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-                            View on GitHub
-                        </a>
-                        <a href="https://git-scm.com/docs/gittutorial"
-                            class="ml-3 inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
-                            Build Instructions
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Verification Section -->
-    <div class="bg-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:text-center">
-                <h2 class="text-base text-orange-600 font-semibold tracking-wide uppercase">Security</h2>
-                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                    Verify your download
-                </p>
-                <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                    Ensure the integrity and authenticity of your Git download with these verification steps.
-                </p>
-            </div>
-            <div class="mt-10">
-                <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-                    <div class="px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
-                            Checksum Verification
-                        </h3>
-                        <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                            Compare the SHA-256 checksum of your downloaded file with the official checksum.
-                        </p>
-                    </div>
-                    <div class="border-t border-gray-200">
-                        <dl>
-                            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">
-                                    Windows Installer
-                                </dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <code id="windows-checksum"
-                                        class="text-xs bg-gray-100 p-2 rounded-md block overflow-x-auto">
-                                        e5d6dc4079e71c4e6bf7d8a42bf4869a5487b6fad1d2f75d9b1a93b1c5208274
-                                    </code>
-                                </dd>
-                            </div>
-                            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">
-                                    macOS Installer
-                                </dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <code id="macos-checksum"
-                                        class="text-xs bg-gray-100 p-2 rounded-md block overflow-x-auto">
-                                        a7c4e79e67e1f7db5a9dc594d58316e5c82a04c3eb172fbbc5dd986d0c3a8257
-                                    </code>
-                                </dd>
-                            </div>
-                            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                <dt class="text-sm font-medium text-gray-500">
-                                    Source Code
-                                </dt>
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    <code id="source-checksum"
-                                        class="text-xs bg-gray-100 p-2 rounded-md block overflow-x-auto">
-                                        9d4235e0642e1d2fbf209c9fef0a0b8fc7dc9589a4d54fbb96d4278cb7df52fc
-                                    </code>
-                                </dd>
-                            </div>
-                        </dl>
-                    </div>
-                </div>
-
-                <div class="mt-8 bg-white shadow overflow-hidden sm:rounded-lg">
-                    <div class="px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
-                            Verify using PowerShell (Windows)
-                        </h3>
-                    </div>
-                    <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
-                        <p class="text-sm text-gray-500 mb-3">
-                            Run the following command in PowerShell to verify your download:
-                        </p>
-                        <pre
-                            class="bg-gray-100 p-3 rounded-md overflow-x-auto text-xs"><code>Get-FileHash -Algorithm SHA256 -Path "path\to\Git-2.40.1-64-bit.exe"</code></pre>
-                        <p class="text-sm text-gray-500 mt-3">
-                            Compare the output hash with the checksum provided above.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="mt-8 bg-white shadow overflow-hidden sm:rounded-lg">
-                    <div class="px-4 py-5 sm:px-6">
-                        <h3 class="text-lg leading-6 font-medium text-gray-900">
-                            Verify using Terminal (macOS/Linux)
-                        </h3>
-                    </div>
-                    <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
-                        <p class="text-sm text-gray-500 mb-3">
-                            Run the following command in Terminal to verify your download:
-                        </p>
-                        <pre
-                            class="bg-gray-100 p-3 rounded-md overflow-x-auto text-xs"><code>shasum -a 256 /path/to/git-2.40.1-intel-universal-mavericks.dmg</code></pre>
-                        <p class="text-sm text-gray-500 mt-3">
-                            Compare the output hash with the checksum provided above.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Section -->
-            <div class="bg-gray-50 py-12 mt-12">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="lg:text-center">
-                        <h2 class="text-base text-orange-600 font-semibold tracking-wide uppercase">FAQ</h2>
-                        <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                            Frequently Asked Questions
-                        </p>
-                        <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                            Common questions about downloading and installing Git.
-                        </p>
-                    </div>
-                    <div class="mt-10">
-                        <dl class="space-y-6 divide-y divide-gray-200">
-                            <div class="pt-6" x-data="{ open: false }">
-                                <dt class="text-lg">
-                                    <button @click="open = !open" type="button"
-                                        class="text-left w-full flex justify-between items-start text-gray-400"
-                                        aria-controls="faq-1" aria-expanded="false">
-                                        <span class="font-medium text-gray-900">What's the difference between the 32-bit
-                                            and 64-bit versions?</span>
-                                        <span class="ml-6 h-7 flex items-center">
-                                            <svg class="h-6 w-6 transform transition-transform duration-200"
-                                                :class="{'rotate-180': open, 'rotate-0': !open}"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </span>
-                                    </button>
-                                </dt>
-                                <dd class="mt-2 pr-12" id="faq-1" x-show="open">
-                                    <p class="text-base text-gray-500">
-                                        The 64-bit version is recommended for modern computers with 64-bit processors,
-                                        which is most computers made after 2010. It can access more memory and may
-                                        perform better for large repositories. The 32-bit version is provided for
-                                        compatibility with older systems.
-                                    </p>
-                                </dd>
-                            </div>
-
-                            <div class="pt-6" x-data="{ open: false }">
-                                <dt class="text-lg">
-                                    <button @click="open = !open" type="button"
-                                        class="text-left w-full flex justify-between items-start text-gray-400"
-                                        aria-controls="faq-2" aria-expanded="false">
-                                        <span class="font-medium text-gray-900">Do I need to uninstall previous versions
-                                            of Git?</span>
-                                        <span class="ml-6 h-7 flex items-center">
-                                            <svg class="h-6 w-6 transform transition-transform duration-200"
-                                                :class="{'rotate-180': open, 'rotate-0': !open}"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </span>
-                                    </button>
-                                </dt>
-                                <dd class="mt-2 pr-12" id="faq-2" x-show="open">
-                                    <p class="text-base text-gray-500">
-                                        No, the installer will automatically update your existing Git installation. Your
-                                        settings and configurations will be preserved.
-                                    </p>
-                                </dd>
-                            </div>
-
-                            <div class="pt-6" x-data="{ open: false }">
-                                <dt class="text-lg">
-                                    <button @click="open = !open" type="button"
-                                        class="text-left w-full flex justify-between items-start text-gray-400"
-                                        aria-controls="faq-3" aria-expanded="false">
-                                        <span class="font-medium text-gray-900">What installation options should I
-                                            choose?</span>
-                                        <span class="ml-6 h-7 flex items-center">
-                                            <svg class="h-6 w-6 transform transition-transform duration-200"
-                                                :class="{'rotate-180': open, 'rotate-0': !open}"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </span>
-                                    </button>
-                                </dt>
-                                <dd class="mt-2 pr-12" id="faq-3" x-show="open">
-                                    <p class="text-base text-gray-500">
-                                        For most users, the default options are recommended. These include Git Bash, Git
-                                        GUI, and shell integration. Advanced users might want to customize the PATH
-                                        environment and line ending conversions based on their specific needs.
-                                    </p>
-                                </dd>
-                            </div>
-
-                            <div class="pt-6" x-data="{ open: false }">
-                                <dt class="text-lg">
-                                    <button @click="open = !open" type="button"
-                                        class="text-left w-full flex justify-between items-start text-gray-400"
-                                        aria-controls="faq-4" aria-expanded="false">
-                                        <span class="font-medium text-gray-900">How do I update Git to the latest
-                                            version?</span>
-                                        <span class="ml-6 h-7 flex items-center">
-                                            <svg class="h-6 w-6 transform transition-transform duration-200"
-                                                :class="{'rotate-180': open, 'rotate-0': !open}"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </span>
-                                    </button>
-                                </dt>
-                                <dd class="mt-2 pr-12" id="faq-4" x-show="open">
-                                    <p class="text-base text-gray-500">
-                                        Simply download and run the latest installer from this page. It will
-                                        automatically update your existing installation. On macOS with Homebrew, you can
-                                        run <code>brew upgrade git</code>. On Linux, use your distribution's package
-                                        manager to update.
-                                    </p>
-                                </dd>
-                            </div>
-
-                            <div class="pt-6" x-data="{ open: false }">
-                                <dt class="text-lg">
-                                    <button @click="open = !open" type="button"
-                                        class="text-left w-full flex justify-between items-start text-gray-400"
-                                        aria-controls="faq-5" aria-expanded="false">
-                                        <span class="font-medium text-gray-900">Where can I find help if I have
-                                            installation problems?</span>
-                                        <span class="ml-6 h-7 flex items-center">
-                                            <svg class="h-6 w-6 transform transition-transform duration-200"
-                                                :class="{'rotate-180': open, 'rotate-0': !open}"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor" aria-hidden="true">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </span>
-                                    </button>
-                                </dt>
-                                <dd class="mt-2 pr-12" id="faq-5" x-show="open">
-                                    <p class="text-base text-gray-500">
-                                        Check the <a href="/documentation"
-                                            class="text-orange-600 hover:text-orange-500">documentation</a> for
-                                        installation guides. You can also seek help on the <a href="/community"
-                                            class="text-orange-600 hover:text-orange-500">Git community forums</a> or <a
-                                            href="https://github.com/git/git/issues"
-                                            class="text-orange-600 hover:text-orange-500">GitHub issues</a> for specific
-                                        problems.
-                                    </p>
-                                </dd>
-                            </div>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <footer class="bg-white">
-                <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
-                    <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
-                        <div class="px-5 py-2">
-                            <a href="/" class="text-base text-gray-500 hover:text-gray-900">
-                                Home
-                            </a>
-                        </div>
-                        <div class="px-5 py-2">
-                            <a href="/download" class="text-base text-gray-500 hover:text-gray-900">
-                                Download
-                            </a>
-                        </div>
-                        <div class="px-5 py-2">
-                            <a href="/documentation" class="text-base text-gray-500 hover:text-gray-900">
-                                Documentation
-                            </a>
-                        </div>
-                        <div class="px-5 py-2">
-                            <a href="/community" class="text-base text-gray-500 hover:text-gray-900">
-                                Community
-                            </a>
-                        </div>
-                        <div class="px-5 py-2">
-                            <a href="about.html" class="text-base text-gray-500 hover:text-gray-900">
-                                About
-                            </a>
-                        </div>
-                    </nav>
-                    <div class="mt-8 flex justify-center space-x-6">
-                        <a href="#" class="text-gray-400 hover:text-gray-500">
-                            <span class="sr-only">GitHub</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-gray-500">
-                            <span class="sr-only">Twitter</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path
-                                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                            </svg>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-gray-500">
-                            <span class="sr-only">YouTube</span>
-                            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
-                    <p class="mt-8 text-center text-base text-gray-400">
-                        &copy; 2025 GitX. All rights reserved.
+        <!-- GitHub Desktop Card -->
+        <div class="bg-gradient-to-r from-purple-50 to-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center mb-8">
+                    <h2 class="text-base text-purple-600 font-semibold tracking-wide uppercase">Alternative Client</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        GitHub Desktop
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                        A simplified GUI client for Git with seamless GitHub integration.
                     </p>
                 </div>
-            </footer>
+                
+                <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+                    x-data="{ showDetails: true }">
+                    <div class="bg-gradient-to-r from-purple-100 to-white p-6 border-b border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="mr-4 bg-purple-100 p-3 rounded-full">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"
+                                    class="text-purple-600">
+                                    <path fill="currentColor"
+                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800">Latest version: 3.3.1</h3>
+                                <p class="text-sm text-gray-500">Available for Windows and macOS</p>
+                            </div>
+                        </div>
 
-            <script src="/js/script.js"></script>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <a href="#" id="github-desktop-download"
+                                class="flex-1 bg-gradient-to-r from-purple-600 to-purple-700 text-white px-4 py-3 rounded-lg hover:from-purple-700 hover:to-purple-800 transition shadow-md hover:shadow-lg flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                </svg>
+                                Download GitHub Desktop
+                            </a>
+                            <button @click="showDetails = !showDetails"
+                                class="flex items-center justify-center border border-gray-300 text-gray-700 px-4 py-3 rounded-lg hover:bg-gray-100 transition">
+                                <span x-text="showDetails ? 'Hide Details' : 'Show Details'"></span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1"
+                                    :class="{'rotate-180': !showDetails}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div x-show="showDetails" x-transition.duration.250ms class="p-6 bg-white">
+                        <div class="text-sm text-gray-600">
+                            <div class="flex items-center mb-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                <span>File size: ~100 MB</span>
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-6 mt-4">
+                                <div>
+                                    <h4 class="font-medium text-gray-900 mb-3">Key Features:</h4>
+                                    <ul class="list-none space-y-2 mb-4">
+                                        <li class="flex items-start">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            Simple GUI for Git operations
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            Seamless GitHub integration
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            Visual commit history and diffs
+                                        </li>
+                                        <li class="flex items-start">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M5 13l4 4L19 7" />
+                                            </svg>
+                                            Available for Windows and macOS
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mt-4 md:mt-0">
+                                    <h4 class="font-medium text-gray-900 mb-3 flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                                        </svg>
+                                        Platform Options:
+                                    </h4>
+                                    <div class="space-y-3 pl-7">
+                                        <a href="#" id="github-desktop-windows"
+                                            class="block text-purple-600 hover:text-purple-800 hover:underline flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                            </svg>
+                                            Download for Windows
+                                        </a>
+                                        <a href="#" id="github-desktop-mac"
+                                            class="block text-purple-600 hover:text-purple-800 hover:underline flex items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline mr-2" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                            </svg>
+                                            Download for macOS
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 pt-6 border-t border-gray-200">
+                                <div class="bg-purple-50 rounded-lg p-4">
+                                    <p class="text-sm text-gray-700">
+                                        <span class="font-medium">Note:</span> GitHub Desktop is maintained by GitHub and provides a user-friendly interface for Git operations. It's especially useful for beginners or those who prefer a visual interface over command-line operations.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Source Code Section -->
+        <div class="bg-gray-50 py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-orange-600 font-semibold tracking-wide uppercase">Source Code</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Build from source
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                        For those who want to build Git from source or contribute to its development.
+                    </p>
+                </div>
+                <div class="mt-10 bg-white shadow overflow-hidden rounded-lg">
+                    <div class="px-4 py-5 sm:p-6">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">Clone the repository</h3>
+                        <div class="mt-2 max-w-xl text-sm text-gray-500">
+                            <p>Clone the Git repository to get the latest source code:</p>
+                        </div>
+                        <div class="mt-3">
+                            <pre
+                                class="bg-gray-100 p-3 rounded-md overflow-x-auto"><code>git clone https://github.com/git/git.git</code></pre>
+                        </div>
+                        <div class="mt-5">
+                            <a href="https://github.com/git/git"
+                                class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+                                View on GitHub
+                            </a>
+                            <a href="https://git-scm.com/docs/gittutorial"
+                                class="ml-3 inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+                                Build Instructions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Verification Section -->
+        <div class="bg-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:text-center">
+                    <h2 class="text-base text-orange-600 font-semibold tracking-wide uppercase">Security</h2>
+                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        Verify your download
+                    </p>
+                    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                        Ensure the integrity and authenticity of your Git download with these verification steps.
+                    </p>
+                </div>
+                <div class="mt-10">
+                    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+                        <div class="px-4 py-5 sm:px-6">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                Checksum Verification
+                            </h3>
+                            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                                Compare the SHA-256 checksum of your downloaded file with the official checksum.
+                            </p>
+                        </div>
+                        <div class="border-t border-gray-200">
+                            <dl>
+                                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">
+                                        Windows Installer
+                                    </dt>
+                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                        <code id="windows-checksum"
+                                            class="text-xs bg-gray-100 p-2 rounded-md block overflow-x-auto">
+                                        e5d6dc4079e71c4e6bf7d8a42bf4869a5487b6fad1d2f75d9b1a93b1c5208274
+                                    </code>
+                                    </dd>
+                                </div>
+                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">
+                                        macOS Installer
+                                    </dt>
+                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                        <code id="macos-checksum"
+                                            class="text-xs bg-gray-100 p-2 rounded-md block overflow-x-auto">
+                                        a7c4e79e67e1f7db5a9dc594d58316e5c82a04c3eb172fbbc5dd986d0c3a8257
+                                    </code>
+                                    </dd>
+                                </div>
+                                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">
+                                        Source Code
+                                    </dt>
+                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                        <code id="source-checksum"
+                                            class="text-xs bg-gray-100 p-2 rounded-md block overflow-x-auto">
+                                        9d4235e0642e1d2fbf209c9fef0a0b8fc7dc9589a4d54fbb96d4278cb7df52fc
+                                    </code>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-white shadow overflow-hidden sm:rounded-lg">
+                        <div class="px-4 py-5 sm:px-6">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                Verify using PowerShell (Windows)
+                            </h3>
+                        </div>
+                        <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                            <p class="text-sm text-gray-500 mb-3">
+                                Run the following command in PowerShell to verify your download:
+                            </p>
+                            <pre
+                                class="bg-gray-100 p-3 rounded-md overflow-x-auto text-xs"><code>Get-FileHash -Algorithm SHA256 -Path "path\to\Git-2.40.1-64-bit.exe"</code></pre>
+                            <p class="text-sm text-gray-500 mt-3">
+                                Compare the output hash with the checksum provided above.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-white shadow overflow-hidden sm:rounded-lg">
+                        <div class="px-4 py-5 sm:px-6">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                Verify using Terminal (macOS/Linux)
+                            </h3>
+                        </div>
+                        <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
+                            <p class="text-sm text-gray-500 mb-3">
+                                Run the following command in Terminal to verify your download:
+                            </p>
+                            <pre
+                                class="bg-gray-100 p-3 rounded-md overflow-x-auto text-xs"><code>shasum -a 256 /path/to/git-2.40.1-intel-universal-mavericks.dmg</code></pre>
+                            <p class="text-sm text-gray-500 mt-3">
+                                Compare the output hash with the checksum provided above.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="bg-gray-50 py-12 mt-12">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="lg:text-center">
+                            <h2 class="text-base text-orange-600 font-semibold tracking-wide uppercase">FAQ</h2>
+                            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                                Frequently Asked Questions
+                            </p>
+                            <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+                                Common questions about downloading and installing Git.
+                            </p>
+                        </div>
+                        <div class="mt-10">
+                            <dl class="space-y-6 divide-y divide-gray-200">
+                                <div class="pt-6" x-data="{ open: false }">
+                                    <dt class="text-lg">
+                                        <button @click="open = !open" type="button"
+                                            class="text-left w-full flex justify-between items-start text-gray-400"
+                                            aria-controls="faq-1" aria-expanded="false">
+                                            <span class="font-medium text-gray-900">What's the difference between the
+                                                32-bit
+                                                and 64-bit versions?</span>
+                                            <span class="ml-6 h-7 flex items-center">
+                                                <svg class="h-6 w-6 transform transition-transform duration-200"
+                                                    :class="{'rotate-180': open, 'rotate-0': !open}"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </dt>
+                                    <dd class="mt-2 pr-12" id="faq-1" x-show="open">
+                                        <p class="text-base text-gray-500">
+                                            The 64-bit version is recommended for modern computers with 64-bit
+                                            processors,
+                                            which is most computers made after 2010. It can access more memory and may
+                                            perform better for large repositories. The 32-bit version is provided for
+                                            compatibility with older systems.
+                                        </p>
+                                    </dd>
+                                </div>
+
+                                <div class="pt-6" x-data="{ open: false }">
+                                    <dt class="text-lg">
+                                        <button @click="open = !open" type="button"
+                                            class="text-left w-full flex justify-between items-start text-gray-400"
+                                            aria-controls="faq-2" aria-expanded="false">
+                                            <span class="font-medium text-gray-900">Do I need to uninstall previous
+                                                versions
+                                                of Git?</span>
+                                            <span class="ml-6 h-7 flex items-center">
+                                                <svg class="h-6 w-6 transform transition-transform duration-200"
+                                                    :class="{'rotate-180': open, 'rotate-0': !open}"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </dt>
+                                    <dd class="mt-2 pr-12" id="faq-2" x-show="open">
+                                        <p class="text-base text-gray-500">
+                                            No, the installer will automatically update your existing Git installation.
+                                            Your
+                                            settings and configurations will be preserved.
+                                        </p>
+                                    </dd>
+                                </div>
+
+                                <div class="pt-6" x-data="{ open: false }">
+                                    <dt class="text-lg">
+                                        <button @click="open = !open" type="button"
+                                            class="text-left w-full flex justify-between items-start text-gray-400"
+                                            aria-controls="faq-3" aria-expanded="false">
+                                            <span class="font-medium text-gray-900">What installation options should I
+                                                choose?</span>
+                                            <span class="ml-6 h-7 flex items-center">
+                                                <svg class="h-6 w-6 transform transition-transform duration-200"
+                                                    :class="{'rotate-180': open, 'rotate-0': !open}"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </dt>
+                                    <dd class="mt-2 pr-12" id="faq-3" x-show="open">
+                                        <p class="text-base text-gray-500">
+                                            For most users, the default options are recommended. These include Git Bash,
+                                            Git
+                                            GUI, and shell integration. Advanced users might want to customize the PATH
+                                            environment and line ending conversions based on their specific needs.
+                                        </p>
+                                    </dd>
+                                </div>
+
+                                <div class="pt-6" x-data="{ open: false }">
+                                    <dt class="text-lg">
+                                        <button @click="open = !open" type="button"
+                                            class="text-left w-full flex justify-between items-start text-gray-400"
+                                            aria-controls="faq-4" aria-expanded="false">
+                                            <span class="font-medium text-gray-900">How do I update Git to the latest
+                                                version?</span>
+                                            <span class="ml-6 h-7 flex items-center">
+                                                <svg class="h-6 w-6 transform transition-transform duration-200"
+                                                    :class="{'rotate-180': open, 'rotate-0': !open}"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </dt>
+                                    <dd class="mt-2 pr-12" id="faq-4" x-show="open">
+                                        <p class="text-base text-gray-500">
+                                            Simply download and run the latest installer from this page. It will
+                                            automatically update your existing installation. On macOS with Homebrew, you
+                                            can
+                                            run <code>brew upgrade git</code>. On Linux, use your distribution's package
+                                            manager to update.
+                                        </p>
+                                    </dd>
+                                </div>
+
+                                <div class="pt-6" x-data="{ open: false }">
+                                    <dt class="text-lg">
+                                        <button @click="open = !open" type="button"
+                                            class="text-left w-full flex justify-between items-start text-gray-400"
+                                            aria-controls="faq-5" aria-expanded="false">
+                                            <span class="font-medium text-gray-900">Where can I find help if I have
+                                                installation problems?</span>
+                                            <span class="ml-6 h-7 flex items-center">
+                                                <svg class="h-6 w-6 transform transition-transform duration-200"
+                                                    :class="{'rotate-180': open, 'rotate-0': !open}"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </dt>
+                                    <dd class="mt-2 pr-12" id="faq-5" x-show="open">
+                                        <p class="text-base text-gray-500">
+                                            Check the <a href="/documentation"
+                                                class="text-orange-600 hover:text-orange-500">documentation</a> for
+                                            installation guides. You can also seek help on the <a href="/community"
+                                                class="text-orange-600 hover:text-orange-500">Git community forums</a>
+                                            or <a href="https://github.com/git/git/issues"
+                                                class="text-orange-600 hover:text-orange-500">GitHub issues</a> for
+                                            specific
+                                            problems.
+                                        </p>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer class="bg-white">
+                    <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+                        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+                            <div class="px-5 py-2">
+                                <a href="/" class="text-base text-gray-500 hover:text-gray-900">
+                                    Home
+                                </a>
+                            </div>
+                            <div class="px-5 py-2">
+                                <a href="/download" class="text-base text-gray-500 hover:text-gray-900">
+                                    Download
+                                </a>
+                            </div>
+                            <div class="px-5 py-2">
+                                <a href="/documentation" class="text-base text-gray-500 hover:text-gray-900">
+                                    Documentation
+                                </a>
+                            </div>
+                            <div class="px-5 py-2">
+                                <a href="/community" class="text-base text-gray-500 hover:text-gray-900">
+                                    Community
+                                </a>
+                            </div>
+                            <div class="px-5 py-2">
+                                <a href="about.html" class="text-base text-gray-500 hover:text-gray-900">
+                                    About
+                                </a>
+                            </div>
+                        </nav>
+                        <div class="mt-8 flex justify-center space-x-6">
+                            <a href="#" class="text-gray-400 hover:text-gray-500">
+                                <span class="sr-only">GitHub</span>
+                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-500">
+                                <span class="sr-only">Twitter</span>
+                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                                </svg>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-gray-500">
+                                <span class="sr-only">YouTube</span>
+                                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                        <p class="mt-8 text-center text-base text-gray-400">
+                            &copy; 2025 GitX. All rights reserved.
+                        </p>
+                    </div>
+                </footer>
+
+                <script src="/js/script.js"></script>
 </body>
 
 </html>
