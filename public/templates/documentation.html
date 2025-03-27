@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Documentation - Fast Version Control</title>
+    <meta name="description"
+        content="Comprehensive documentation for Git, the free and open source distributed version control system.">
+    <link rel="stylesheet" href="/css/tailwindcss.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+    <style>
+        .prose ol li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+            counter-increment: list-counter;
+        }
+        
+        .prose ol li::before {
+            content: counter(list-counter);
+            position: absolute;
+            left: -10px;
+            top: 0;
+            height: 1.5rem;
+            width: 1.5rem;
+            background-color: #f97316;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .prose ul li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .prose ul li::before {
+            content: "";
+            position: absolute;
+            left: -10px;
+            top: 0.5rem;
+            height: 0.5rem;
+            width: 0.5rem;
+            background-color: #f97316;
+            border-radius: 50%;
+        }
+        
+        .prose ol, .prose ul {
+            padding-left: 0.5rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        code {
+            background-color: #f3f4f6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.875em;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm" x-data="{ isOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="/" class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                                viewBox="0 0 48 48">
+                                <path fill="#F4511E"
+                                    d="M42.2,22.1L25.9,5.8C25.4,5.3,24.7,5,24,5c0,0,0,0,0,0c-0.7,0-1.4,0.3-1.9,0.8l-3.5,3.5l4.1,4.1c0.4-0.2,0.8-0.3,1.3-0.3c1.7,0,3,1.3,3,3c0,0.5-0.1,0.9-0.3,1.3l4,4c0.4-0.2,0.8-0.3,1.3-0.3c1.7,0,3,1.3,3,3s-1.3,3-3,3c-1.7,0-3-1.3-3-3c0-0.5,0.1-0.9,0.3-1.3l-4-4c-0.1,0-0.2,0.1-0.3,0.1v10.4c1.2,0.4,2,1.5,2,2.8c0,1.7-1.3,3-3,3s-3-1.3-3-3c0-1.3,0.8-2.4,2-2.8V18.8c-1.2-0.4-2-1.5-2-2.8c0-0.5,0.1-0.9,0.3-1.3l-4.1-4.1L5.8,22.1C5.3,22.6,5,23.3,5,24c0,0.7,0.3,1.4,0.8,1.9l16.3,16.3c0,0,0,0,0,0c0.5,0.5,1.2,0.8,1.9,0.8s1.4-0.3,1.9-0.8l16.3-16.3c0.5-0.5,0.8-1.2,0.8-1.9C43,23.3,42.7,22.6,42.2,22.1z">
+                                </path>
+                            </svg>
+                            <span class="ml-2 text-xl font-semibold text-gray-900">Git</span>
+                        </a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="/"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Home
+                        </a>
+                        <a href="/download"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Download
+                        </a>
+                        <a href="/documentation"
+                            class="border-orange-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Documentation
+                        </a>
+                        <a href="/community"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Community
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="https://github.com/git/git" class="text-gray-500 hover:text-gray-700 p-2 rounded-full">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <button @click="isOpen = !isOpen" type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sm:hidden" id="mobile-menu" x-show="isOpen">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="/"
+                    class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    Home
+                </a>
+                <a href="/download"
+                    class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    Download
+                </a>
+                <a href="/documentation"
+                    class="bg-orange-50 border-orange-500 text-orange-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    Documentation
+                </a>
+                <a href="/community"
+                    class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    Community
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Documentation Hero Section -->
+    <div class="bg-white">
+        <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+                    <span class="block text-orange-600">Comprehensive Git Documentation Guide</span>
+                </h1>                
+                <p class="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                    Comprehensive guides, references, and resources to help you master Git.
+                </p>
+                <div class="mt-8 flex justify-center">
+                    <div class="rounded-md shadow">
+                        <a href="#getting-started"
+                            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg md:px-10">
+                            Get Started
+                        </a>
+                    </div>
+                    <div class="ml-3 rounded-md shadow">
+                        <a href="#reference"
+                            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-orange-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                            Reference
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Documentation Content -->
+    <div class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <!-- Sidebar Navigation -->
+                <div class="hidden lg:block lg:col-span-3">
+                    <nav class="sticky top-6 space-y-1" aria-label="Sidebar">
+                        <a href="#getting-started"
+                            class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                            <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                            <span>Getting Started</span>
+                        </a>
+
+                        <a href="#basics"
+                            class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                            <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                            <span>Git Basics</span>
+                        </a>
+
+                        <a href="#branching"
+                            class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                            <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
+                            </svg>
+                            <span>Branching & Merging</span>
+                        </a>
+
+                        <a href="#advanced"
+                            class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                            <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                            </svg>
+                            <span>Advanced Topics</span>
+                        </a>
+
+                        <a href="#reference"
+                            class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                            <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            <span>Command Reference</span>
+                        </a>
+
+                        <a href="#videos"
+                            class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                            <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            <span>Video Tutorials</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="mt-12 lg:mt-0 lg:col-span-9">
+                    <!-- Getting Started Section -->
+                    <section id="getting-started" class="mb-16">
+                        <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Getting Started with Git</h2>
+
+                        <div class="prose prose-orange prose-lg text-gray-500 mx-auto">
+                            <p class="mb-4">Git is a distributed version control system that allows you to track changes
+                                in your code, collaborate with others, and maintain a history of your project. This
+                                guide will help you get started with Git.</p>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Installation</h3>
+
+                            <p class="mb-2">Before you can start using Git, you need to install it on your computer:</p>
+                            <ul class="mb-4">
+                                <li class="mb-1">For Windows: Download and run the installer from our <a
+                                        href="/download" class="text-orange-600 hover:text-orange-500">download
+                                        page</a>.</li>
+                                <li class="mb-1">For macOS: Use Homebrew with <code>brew install git</code> or download
+                                    the installer.</li>
+                                <li class="mb-1">For Linux: Use your distribution's package manager (e.g.,
+                                    <code>apt-get install git</code> for Debian/Ubuntu).</li>
+                            </ul>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Initial Configuration</h3>
+                            <p class="mb-2">After installing Git, you should set up your identity:</p>
+                            <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-4"><code>git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"</code></pre>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Creating Your First Repository</h3>
+                            <p class="mb-2">To start tracking a project with Git:</p>
+                            <ol class="mb-2">
+                                <li class="mb-1">Navigate to your project directory in the terminal or command prompt.</li>
+                                <li class="mb-1">Initialize a new Git repository with <code>git init</code>.</li>
+                                <li class="mb-1">Add files to the staging area with <code>git add .</code>.</li>
+                                <li class="mb-1">Commit your changes with <code>git commit -m "Initial commit"</code>.</li>
+                            </ol>
+
+                            <div class="bg-blue-50 border-l-4 border-blue-400 p-4 my-6">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <svg class="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-blue-700">
+                                            <strong>Tip:</strong> If you're new to the command line, don't worry! There
+                                            are many graphical Git clients available that make it easier to get started.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#basics" class="inline-flex items-center text-orange-600 hover:text-orange-500">
+                                Continue to Git Basics
+                                <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Git Basics Section -->
+                    <section id="basics" class="mb-16">
+                        <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Git Basics</h2>
+
+                        <div class="prose prose-orange prose-lg text-gray-500 mx-auto">
+                            <p class="mb-2">Understanding the basic Git workflow is essential for effective version
+                                control. Here are the fundamental concepts and commands you'll use regularly.</p>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">The Three States</h3>
+                            <p class="mb-2">Git has three main states that your files can reside in:</p>
+                            <ul class="mb-2">
+                                <li class="mb-1"><strong>Modified:</strong> You've changed the file but haven't committed it yet.
+                                </li class="mb-1">
+                                <li class="mb-1"><strong>Staged:</strong> You've marked a modified file to go into your next commit.
+                                </li class="mb-1">
+                                <li><strong>Committed:</strong> The data is safely stored in your local database.</li>
+                            </ul>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Basic Git Workflow</h3>
+                            <ol class="mb-2">
+                                <li class="mb-1">Modify files in your working directory.</li>
+                                <li class="mb-1">Stage the files, adding snapshots to your staging area.</li>
+                                <li class="mb-1">Commit the changes, which stores the snapshots permanently in your Git repository.
+                                </li>
+                            </ol>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Essential Commands</h3>
+
+                            <h4 class="text-2xl text-gray-600 mb-3">Checking Status</h4>
+                            <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git status</code></pre>
+                            <p class="mb-2">Shows the status of files in your working directory and staging area.</p>
+
+                            <h4 class="text-2xl text-gray-600 mb-3">Adding Files</h4>
+                            <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git add filename    # Add a specific file
+git add .          # Add all files</code></pre>
+                            <p class="mb-3">Adds files to the staging area, preparing them for a commit.</p>
+
+                            <h4 class="text-2xl text-gray-600 mb-3">Committing Changes</h4>
+                            <pre
+                                class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git commit -m "Descriptive message"</code></pre>
+                            <p class="mb-2">Records the changes in the repository with a message describing what was changed.</p>
+
+                            <h4 class="text-2xl text-gray-600 mb-3">Viewing History</h4>
+                            <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git log</code></pre>
+                            <p class="mb-2">Shows a log of all commits, with details like author, date, and commit message.</p>
+
+                            <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 my-6">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-yellow-700">
+                                            <strong>Best Practice:</strong> Write clear, descriptive commit messages
+                                            that explain what changes were made and why. This helps your team (and
+                                            future you) understand the project's history.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="#branching" class="inline-flex items-center text-orange-600 hover:text-orange-500">
+                                Continue to Branching & Merging
+                                <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Branching & Merging Section -->
+                    <section id="branching" class="mb-16">
+                        <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Branching & Merging</h2>
+
+                        <div class="prose prose-orange prose-lg text-gray-500 mx-auto">
+                            <p class="mb-2">Branching is one of Git's most powerful features. It allows you to diverge
+                                from the main line of development and continue working without affecting that main line.
+                            </p>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Working with Branches</h3>
+
+                            <h4 class="text-2xl text-gray-600 mb-3">Creating a Branch</h4>
+                            <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git branch branch-name       # Create a branch
+git checkout -b branch-name  # Create and switch to the branch</code></pre>
+
+                            <h4 class="text-2xl text-gray-600 mb-3">Switching Branches</h4>
+                            <pre
+                                class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git checkout branch-name</code></pre>
+
+                            <h4 class="text-2xl text-gray-600 mb-3">Listing Branches</h4>
+                            <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git branch          # List local branches
+git branch -a       # List all branches including remote</code></pre>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Merging</h3>
+                            <p class="mb-2">Merging is the process of integrating changes from one branch into another.
+                                This is typically done when a feature or bugfix is complete and ready to be incorporated
+                                into the main codebase.</p>
+
+                            <h4 class="text-2xl text-gray-600 mb-3">Basic Merge</h4>
+                            <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git checkout main       # Switch to the target branch
+git merge feature-branch # Merge the feature branch into main</code></pre>
+
+                            <h4 class="text-2xl text-gray-600 mb-3">Handling Merge Conflicts</h4>
+                            <p class="mb-2">Sometimes Git can't automatically merge changes, resulting in conflicts that
+                                need manual resolution:</p>
+                            <ol class="mb-2">
+                                <li class="mb-1">Git will mark the conflicted files</li>
+                                <li class="mb-1">Open the files and look for conflict markers
+                                    (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, and
+                                    <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>)</li>
+                                <li class="mb-1">Edit the files to resolve the conflicts</li>
+                                <li class="mb-1">Add the resolved files with <code>git add</code></li>
+                                <li class="mb-1">Complete the merge with <code>git commit</code></li>
+                            </ol>
+
+                            <div class="bg-green-50 border-l-4 border-green-400 p-4 my-6">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-green-700">
+                                            <strong>Pro Tip:</strong> Use <code>git merge --abort</code> to cancel a
+                                            merge that has conflicts and start over.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Branching Strategies</h3>
+                            <p class="mb-2">Several branching strategies have emerged to help teams work effectively:
+                            </p>
+
+                            <h4 class="text-2xl text-gray-600 mb-3">Git Flow</h4>
+                            <p class="mb-2">A robust workflow that uses multiple branches for features, releases, and
+                                hotfixes:</p>
+                            <ul class="mb-2">
+                                <li class="mb-1"><strong>main:</strong> Production-ready code</li>
+                                <li class="mb-1"><strong>develop:</strong> Latest development changes</li>
+                                <li class="mb-1"><strong>feature/*:</strong> New features</li>
+                                <li class="mb-1"><strong>release/*:</strong> Preparing for a release</li>
+                                <li class="mb-1"><strong>hotfix/*:</strong> Quick fixes for production issues</li>
+                            </ul>
+
+                            <h4 class="text-2xl text-gray-600 mb-3">GitHub Flow</h4>
+                            <p class="mb-2">A simpler alternative with just two types of branches:</p>
+                            <ul class="mb-2">
+                                <li class="mb-1"><strong>main:</strong> Always deployable</li>
+                                <li class="mb-1"><strong>feature branches:</strong> For new work</li>
+                            </ul>
+
+                            <a href="#advanced" class="inline-flex items-center text-orange-600 hover:text-orange-500">
+                                Continue to Advanced Topics
+                                <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Advanced Topics Section -->
+                    <section id="advanced" class="mb-16">
+                        <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Advanced Git Topics</h2>
+
+                        <div class="prose prose-orange prose-lg text-gray-500 mx-auto">
+                            <p class="mb-2">Once you're comfortable with the basics, these advanced Git features will
+                                help you become more productive and handle complex scenarios.</p>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Rebasing</h3>
+                            <p class="mb-2">Rebasing is an alternative to merging that rewrites commit history to create
+                                a cleaner, linear sequence of commits:</p>
+                            <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git checkout feature-branch
+git rebase main</code></pre>
+
+                            <div class="bg-red-50 border-l-4 border-red-400 p-4 my-6">
+                                <div class="flex">
+                                    <div class="flex-shrink-0">
+                                        <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="text-sm text-red-700">
+                                            <strong>Warning:</strong> Never rebase commits that have been pushed to a
+                                            public repository. This can cause problems for other developers who have
+                                            based their work on those commits.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Interactive Rebase</h3>
+                            <p class="mb-2">Interactive rebasing allows you to modify commits as you rebase them:</p>
+                            <pre
+                                class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git rebase -i HEAD~3  # Interactively rebase the last 3 commits</code></pre>
+                            <p class="mb-2">This opens an editor where you can:</p>
+                            <ul class="mb-2">
+                                <li class="mb-1">Reorder commits</li>
+                                <li class="mb-1">Edit commit messages</li>
+                                <li class="mb-1">Squash multiple commits into one</li>
+                                <li class="mb-1">Split commits</li>
+                                <li class="mb-1">Delete commits</li>
+                            </ul>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Cherry-Picking</h3>
+                            <p class="mb-2">Cherry-picking allows you to apply specific commits from one branch to
+                                another:</p>
+                            <pre
+                                class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git cherry-pick commit-hash</code></pre>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Stashing</h3>
+                            <p class="mb-2">Stashing allows you to save uncommitted changes temporarily so you can
+                                switch to another branch:</p>
+                            <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git stash                 # Stash changes
+git stash list             # List stashes
+git stash apply            # Apply the most recent stash
+git stash apply stash@{n}  # Apply a specific stash
+git stash drop             # Remove the most recent stash
+git stash pop              # Apply and remove the most recent stash</code></pre>
+
+                            <h3 class="text-2xl text-gray-800 mb-4">Submodules</h3>
+                            <p class="mb-2">Submodules allow you to keep a Git repository as a subdirectory of another
+                                Git repository:</p>
+                            <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mb-2"><code>git submodule add https://github.com/example/repo.git path/to/submodule
+git submodule update --init --recursive  # Initialize and update submodules</code></pre>
+
+                            <a href="#reference" class="inline-flex items-center text-orange-600 hover:text-orange-500">
+                                Continue to Command Reference
+                                <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Command Reference Section -->
+                    <section id="reference" class="mb-16">
+                        <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Git Command Reference</h2>
+
+                        <div class="prose prose-orange prose-lg text-gray-500 mx-auto">
+                            <p>This reference provides a quick overview of common Git commands grouped by functionality.
+                            </p>
+
+                            <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-300">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col"
+                                                class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                Command</th>
+                                            <th scope="col"
+                                                class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200 bg-white">
+                                        <tr class="bg-gray-100">
+                                            <td colspan="2"
+                                                class="py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Setup
+                                                and Configuration</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git config</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Configure Git settings</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git help</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Display help information</td>
+                                        </tr>
+
+                                        <tr class="bg-gray-100">
+                                            <td colspan="2"
+                                                class="py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                Creating Projects</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git init</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Create a new local repository
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git clone</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Clone a repository</td>
+                                        </tr>
+
+                                        <tr class="bg-gray-100">
+                                            <td colspan="2"
+                                                class="py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Basic
+                                                Snapshotting</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git add</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Add files to staging area</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git status</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Check repository status</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git commit</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Commit changes</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git reset</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Reset staging area to match most
+                                                recent commit</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git rm</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Remove files from working
+                                                directory</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git mv</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Move or rename files</td>
+                                        </tr>
+
+                                        <tr class="bg-gray-100">
+                                            <td colspan="2"
+                                                class="py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                Branching and Merging</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git branch</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">List, create, or delete branches
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git checkout</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Switch branches or restore files
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git merge</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Merge branches</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git rebase</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Reapply commits on top of
+                                                another base</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git tag</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Create, list, delete, or verify
+                                                tags</td>
+                                        </tr>
+
+                                        <tr class="bg-gray-100">
+                                            <td colspan="2"
+                                                class="py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Sharing
+                                                and Updating</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git fetch</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Download objects and refs from
+                                                another repository</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git pull</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Fetch and integrate with another
+                                                repository or branch</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git push</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Update remote refs along with
+                                                associated objects</td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                class="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                                <code>git remote</code></td>
+                                            <td class="px-3 py-2 text-sm text-gray-500">Manage remote repositories</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <p class="mt-6">For a complete reference of all Git commands, visit the <a
+                                    href="https://git-scm.com/docs"
+                                    class="text-orange-600 hover:text-orange-500">official Git documentation</a>.</p>
+
+                            <a href="#videos" class="inline-flex items-center text-orange-600 hover:text-orange-500">
+                                Continue to Video Tutorials
+                                <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </section>
+                    <!-- Video Tutorials Section -->
+                    <section id="videos" class="mb-16">
+                        <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Video Tutorials</h2>
+
+                        <div class="prose prose-orange prose-lg text-gray-500 mx-auto">
+                            <p>Sometimes it's easier to learn by watching. These video tutorials cover Git concepts from
+                                beginner to advanced.</p>
+
+                            <div class="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-2 lg:grid-cols-3">
+                                <!-- Video Card 1 -->
+                                <div class="bg-white overflow-hidden shadow rounded-lg">
+                                    <div class="relative pb-[56.25%] h-0">
+                                        <img src="https://via.placeholder.com/640x360.png?text=Git+Basics+Tutorial"
+                                            alt="Git Basics Tutorial" class="absolute h-full w-full object-cover">
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                            <svg class="h-16 w-16 text-white opacity-75"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-5 sm:p-6">
+                                        <h3 class="text-lg font-medium text-gray-900">Git Basics for Beginners</h3>
+                                        <p class="mt-1 text-sm text-gray-500">Learn the fundamental concepts and
+                                            commands of Git in this beginner-friendly tutorial.</p>
+                                        <div class="mt-4">
+                                            <a href="#"
+                                                class="text-sm font-medium text-orange-600 hover:text-orange-500">Watch
+                                                Tutorial <span aria-hidden="true">&rarr;</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Video Card 2 -->
+                                <div class="bg-white overflow-hidden shadow rounded-lg">
+                                    <div class="relative pb-[56.25%] h-0">
+                                        <img src="https://via.placeholder.com/640x360.png?text=Branching+and+Merging"
+                                            alt="Branching and Merging Tutorial"
+                                            class="absolute h-full w-full object-cover">
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                            <svg class="h-16 w-16 text-white opacity-75"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-5 sm:p-6">
+                                        <h3 class="text-lg font-medium text-gray-900">Branching and Merging</h3>
+                                        <p class="mt-1 text-sm text-gray-500">Master Git's powerful branching and
+                                            merging capabilities with practical examples.</p>
+                                        <div class="mt-4">
+                                            <a href="#"
+                                                class="text-sm font-medium text-orange-600 hover:text-orange-500">Watch
+                                                Tutorial <span aria-hidden="true">&rarr;</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Video Card 3 -->
+                                <div class="bg-white overflow-hidden shadow rounded-lg">
+                                    <div class="relative pb-[56.25%] h-0">
+                                        <img src="https://via.placeholder.com/640x360.png?text=Advanced+Git+Techniques"
+                                            alt="Advanced Git Techniques" class="absolute h-full w-full object-cover">
+                                        <div class="absolute inset-0 flex items-center justify-center">
+                                            <svg class="h-16 w-16 text-white opacity-75"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-5 sm:p-6">
+                                        <h3 class="text-lg font-medium text-gray-900">Advanced Git Techniques</h3>
+                                        <p class="mt-1 text-sm text-gray-500">Take your Git skills to the next level
+                                            with rebasing, cherry-picking, and more.</p>
+                                        <div class="mt-4">
+                                            <a href="#"
+                                                class="text-sm font-medium text-orange-600 hover:text-orange-500">Watch
+                                                Tutorial <span aria-hidden="true">&rarr;</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-10 text-center">
+                                <a href="https://www.youtube.com/results?search_query=git+tutorial"
+                                    class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700">
+                                    View More Tutorials
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Additional Resources Section -->
+                    <section class="mb-16">
+                        <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Additional Resources</h2>
+
+                        <div class="prose prose-orange prose-lg text-gray-500 mx-auto">
+                            <p>Expand your Git knowledge with these additional resources:</p>
+
+                            <div class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2">
+                                <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
+                                    <div class="px-4 py-5 sm:px-6">
+                                        <h3 class="text-lg font-medium text-gray-900">Books</h3>
+                                    </div>
+                                    <div class="px-4 py-5 sm:p-6">
+                                        <ul class="space-y-4">
+                                            <li>
+                                                <a href="https://git-scm.com/book/en/v2"
+                                                    class="text-orange-600 hover:text-orange-500">Pro Git</a>
+                                                <p class="text-sm text-gray-500">The official and comprehensive Git
+                                                    book, written by Scott Chacon and Ben Straub.</p>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="text-orange-600 hover:text-orange-500">Git Pocket
+                                                    Guide</a>
+                                                <p class="text-sm text-gray-500">A handy reference for the day-to-day
+                                                    use of Git.</p>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="text-orange-600 hover:text-orange-500">Version
+                                                    Control with Git</a>
+                                                <p class="text-sm text-gray-500">A comprehensive introduction to Git for
+                                                    new users.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
+                                    <div class="px-4 py-5 sm:px-6">
+                                        <h3 class="text-lg font-medium text-gray-900">Online Courses</h3>
+                                    </div>
+                                    <div class="px-4 py-5 sm:p-6">
+                                        <ul class="space-y-4">
+                                            <li>
+                                                <a href="#" class="text-orange-600 hover:text-orange-500">Git & GitHub
+                                                    Crash Course</a>
+                                                <p class="text-sm text-gray-500">A quick introduction to Git and GitHub
+                                                    for beginners.</p>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="text-orange-600 hover:text-orange-500">Git Complete:
+                                                    The Definitive Guide</a>
+                                                <p class="text-sm text-gray-500">Comprehensive course covering all Git
+                                                    features and commands.</p>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="text-orange-600 hover:text-orange-500">Advanced Git
+                                                    Techniques</a>
+                                                <p class="text-sm text-gray-500">Master advanced Git workflows and
+                                                    problem-solving.</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 bg-gray-50 border border-gray-200 rounded-lg p-6">
+                                <h3 class="text-lg font-medium text-gray-900">Interactive Learning</h3>
+                                <p class="mt-2 text-sm text-gray-500">Practice Git commands in an interactive
+                                    environment:</p>
+                                <div class="mt-4 space-y-2">
+                                    <a href="https://learngitbranching.js.org/"
+                                        class="text-orange-600 hover:text-orange-500 block">Learn Git Branching</a>
+                                    <a href="https://git-school.github.io/visualizing-git/"
+                                        class="text-orange-600 hover:text-orange-500 block">Visualizing Git</a>
+                                    <a href="https://gitimmersion.com/"
+                                        class="text-orange-600 hover:text-orange-500 block">Git Immersion</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+            <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+                <div class="px-5 py-2">
+                    <a href="/" class="text-base text-gray-500 hover:text-gray-900">
+                        Home
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="/download" class="text-base text-gray-500 hover:text-gray-900">
+                        Download
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="/documentation" class="text-base text-gray-500 hover:text-gray-900">
+                        Documentation
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="/community" class="text-base text-gray-500 hover:text-gray-900">
+                        Community
+                    </a>
+                </div>
+                <div class="px-5 py-2">
+                    <a href="about.html" class="text-base text-gray-500 hover:text-gray-900">
+                        About
+                    </a>
+                </div>
+            </nav>
+            <div class="mt-8 flex justify-center space-x-6">
+                <a href="#" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">GitHub</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">Twitter</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">YouTube</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+            <p class="mt-8 text-center text-base text-gray-400">
+                &copy; 2025 Git Project. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
