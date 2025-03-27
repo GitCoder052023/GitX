@@ -1,10 +1,10 @@
-# Contributing to Git Website Project
+# Contributing to GItX
 
-Thank you for considering contributing to the Git Website Project! This document outlines the guidelines for contributing to this project.
+Thank you for considering contributing to the GitX! This document outlines the guidelines for contributing to this project.
 
 ## Code of Conduct
 
-By participating in this project, you agree to abide by our Code of Conduct. Please read it before contributing.
+By participating in this project, you agree to abide by our [Code of Conduct]((https://github.com/GitCoder052023/GitX/blob/main/CODE_OF_CONDUCT.md)). Please read it before contributing.
 
 ## How Can I Contribute?
 

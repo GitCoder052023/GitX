@@ -1,6 +1,24 @@
 # GitX
 
+![Screenshot](public/images/screenshot.png)
+
 GitX is a modern, responsive website for the Git version control system built with Express.js, HTML, CSS, and JavaScript.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Pages](#pages)
+- [Technologies Used](#technologies-used)
+- [Error Handling](#error-handling)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+
 
 ## Overview
 
@@ -95,4 +113,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Git project for inspiration
 - Tailwind CSS for the styling framework
 - Alpine.js for the interactive components
-```
