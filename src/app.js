@@ -9,10 +9,6 @@ app.use('/templates/*', (req, res) => {
     res.status(403).sendFile(path.join(PROJECT_ROOT, 'public/templates/Access_Denied.html')); 
 });
 
-app.use('/images/*', (req, res) => {
-    res.status(403).sendFile(path.join(PROJECT_ROOT, 'public/templates/Access_Denied.html'));
-});
-
 app.use(express.static(path.join(PROJECT_ROOT, 'public')));
 
 app.get('/', (req, res) => { 
@@ -26,6 +22,10 @@ app.get('/download', (req, res) => {
 });
 app.get('/documentation', (req, res) => { 
     res.sendFile(path.join(PROJECT_ROOT, 'public', 'templates', 'documentation.html')); 
+});
+
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(PROJECT_ROOT, 'public/templates/404.html'));
 });
 
 app.listen(PORT, () => { 
