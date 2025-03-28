@@ -186,4 +186,56 @@ document.addEventListener('DOMContentLoaded', function () {
     if (mobileMenu) {
         mobileMenu.style.transition = 'all 0.3s ease-in-out';
     }
+
+    const donationForm = document.getElementById('donation-form');
+    const donationAmountInput = document.getElementById('donation-amount');
+    const donationAmountBtns = document.querySelectorAll('.donation-amount-btn');
+    
+    if (donationAmountBtns) {
+        donationAmountBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                donationAmountBtns.forEach(b => b.classList.remove('active'));
+                
+                this.classList.add('active');
+                
+                if (donationAmountInput) {
+                    donationAmountInput.value = this.dataset.amount;
+                }
+            });
+        });
+    }
+    
+    if (donationForm) {
+        donationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const amount = donationAmountInput.value;
+            if (!amount || isNaN(amount) || amount <= 0) {
+                alert('Please enter a valid donation amount');
+                return;
+            }
+            
+            const upiId = '9389979319@ybl';
+            const payeeName = 'GitX Development';
+            const description = 'Donation to GitX';
+            
+            let upiLink;
+            
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(payeeName)}&am=${amount}&cu=INR&tn=${encodeURIComponent(description)}`;
+                
+                sessionStorage.setItem('donation_amount', amount);
+                
+                window.location.href = upiLink;
+                
+                setTimeout(() => {
+                    window.location.href = '/donation-thank-you';
+                }, 5000);
+            } else {
+                alert('Please scan the QR code with your UPI app or use a mobile device to make the payment');
+            }
+        });
+    }
 });

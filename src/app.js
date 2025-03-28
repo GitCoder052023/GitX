@@ -23,6 +23,9 @@ app.get('/download', (req, res) => {
 app.get('/documentation', (req, res) => { 
     res.sendFile(path.join(PROJECT_ROOT, 'public', 'templates', 'documentation.html')); 
 });
+app.get('/donation-thank-you', (req, res) => { 
+    res.sendFile(path.join(PROJECT_ROOT, 'public', 'templates', 'donation-thank-you.html')); 
+});
 
 app.use((req, res) => {
     res.status(404).sendFile(path.join(PROJECT_ROOT, 'public/templates/404.html'));

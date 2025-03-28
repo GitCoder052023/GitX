@@ -6,11 +6,13 @@ html {
     scroll-behavior: smooth;
 }
 
-a, button {
+a,
+button {
     transition: all 0.2s ease-in-out;
 }
 
-a:focus, button:focus {
+a:focus,
+button:focus {
     outline: none;
 }
 
@@ -19,7 +21,8 @@ nav a:focus {
     box-shadow: none;
 }
 
-a:not(nav a):focus, button:focus {
+a:not(nav a):focus,
+button:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.5);
 }
@@ -29,6 +32,7 @@ a:not(nav a):focus, button:focus {
         transform: translateY(100%);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -40,6 +44,7 @@ a:not(nav a):focus, button:focus {
         transform: translateY(0);
         opacity: 1;
     }
+
     to {
         transform: translateY(100%);
         opacity: 0;
@@ -78,11 +83,39 @@ pre::-webkit-scrollbar-thumb:hover {
 }
 
 .hero-gradient {
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 100%);
 }
 
 @media (max-width: 640px) {
     .hero-gradient {
-        background: rgba(255,255,255,0.9);
+        background: rgba(255, 255, 255, 0.9);
     }
+}
+
+/* Donation form styles */
+.donation-input {
+    transition: border-color 0.2s ease;
+}
+
+.donation-input:focus {
+    border-color: #f97316;
+    box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+.donation-amount-btn {
+    transition: all 0.2s ease;
+}
+
+.donation-amount-btn.active {
+    background-color: #f97316;
+    color: white;
+}
+
+.thank-you-container {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
