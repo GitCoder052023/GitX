@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitX Community | Connect with Git Developers & Contributors</title>
-    <meta name="description" content="Join the GitX community to connect with Git developers, find resources, participate in events, and contribute to open source projects.">
-    <meta name="keywords" content="git community, git developers, open source contribution, git forums, git events, version control community">
+    <meta name="description"
+        content="Join the GitX community to connect with Git developers, find resources, participate in events, and contribute to open source projects.">
+    <meta name="keywords"
+        content="git community, git developers, open source contribution, git forums, git events, version control community">
     <meta name="author" content="Hamdan Khubaib">
     <meta property="og:title" content="GitX Community | Connect with Git Developers">
-    <meta property="og:description" content="Join our thriving community of Git developers and contributors. Find resources, events, and collaboration opportunities.">
+    <meta property="og:description"
+        content="Join our thriving community of Git developers and contributors. Find resources, events, and collaboration opportunities.">
     <meta property="og:image" content="/images/gitx-community-preview.png">
     <meta property="og:url" content="https://gitx.vercel.app/community">
     <meta property="og:type" content="website">
@@ -19,6 +23,7 @@
     <link rel="stylesheet" href="/css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
 </head>
+
 <body class="bg-gray-50 text-gray-800 font-sans">
     <!-- Navigation -->
     <nav class="bg-white shadow-sm" x-data="{ isOpen: false }">
@@ -37,16 +42,20 @@
                         </a>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                        <a href="/" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="/"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Home
                         </a>
-                        <a href="/download" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="/download"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Download
                         </a>
-                        <a href="/documentation" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="/documentation"
+                            class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Documentation
                         </a>
-                        <a href="/community" class="border-orange-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                        <a href="/community"
+                            class="border-orange-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
                             Community
                         </a>
                     </div>
@@ -54,18 +63,26 @@
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
                     <a href="https://github.com/git/git" class="text-gray-500 hover:text-gray-700 p-2 rounded-full">
                         <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                clip-rule="evenodd" />
                         </svg>
                     </a>
                 </div>
                 <div class="-mr-2 flex items-center sm:hidden">
-                    <button @click="isOpen = !isOpen" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500" aria-controls="mobile-menu" aria-expanded="false">
+                    <button @click="isOpen = !isOpen" type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500"
+                        aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
-                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
@@ -74,16 +91,20 @@
 
         <div class="sm:hidden" id="mobile-menu" x-show="isOpen">
             <div class="pt-2 pb-3 space-y-1">
-                <a href="/" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                <a href="/"
+                    class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
                     Home
                 </a>
-                <a href="/download" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                <a href="/download"
+                    class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
                     Download
                 </a>
-                <a href="/documentation" class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                <a href="/documentation"
+                    class="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
                     Documentation
                 </a>
-                <a href="/community" class="bg-orange-50 border-orange-500 text-orange-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                <a href="/community"
+                    class="bg-orange-50 border-orange-500 text-orange-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
                     Community
                 </a>
             </div>
@@ -102,12 +123,14 @@
                 </p>
                 <div class="mt-8 flex justify-center">
                     <div class="rounded-md shadow">
-                        <a href="#contribute" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg md:px-10">
+                        <a href="#contribute"
+                            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg md:px-10">
                             Contribute
                         </a>
                     </div>
                     <div class="ml-3 rounded-md shadow">
-                        <a href="#get-help" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-orange-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+                        <a href="#get-help"
+                            class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-orange-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
                             Get Help
                         </a>
                     </div>
@@ -122,37 +145,43 @@
             <!-- Communication Channels Section -->
             <section class="mb-16">
                 <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Communication Channels</h2>
-                
+
                 <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                     <!-- Mailing Lists -->
                     <div class="bg-white overflow-hidden shadow rounded-lg">
                         <div class="px-4 py-5 sm:p-6">
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 bg-orange-100 rounded-md p-3">
-                                    <svg class="h-6 w-6 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    <svg class="h-6 w-6 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                 </div>
                                 <div class="ml-5">
                                     <h3 class="text-lg font-medium text-gray-900">Mailing Lists</h3>
-                                    <p class="mt-1 text-sm text-gray-500">The primary means of communication for Git development.</p>
+                                    <p class="mt-1 text-sm text-gray-500">The primary means of communication for Git
+                                        development.</p>
                                 </div>
                             </div>
                             <div class="mt-6">
                                 <ul class="space-y-3">
                                     <li>
-                                        <a href="https://lore.kernel.org/git/" class="text-orange-600 hover:text-orange-500 text-sm">
+                                        <a href="https://lore.kernel.org/git/"
+                                            class="text-orange-600 hover:text-orange-500 text-sm">
                                             Git Mailing List Archives
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="mailto:git@vger.kernel.org" class="text-orange-600 hover:text-orange-500 text-sm">
+                                        <a href="mailto:git@vger.kernel.org"
+                                            class="text-orange-600 hover:text-orange-500 text-sm">
                                             git@vger.kernel.org
                                         </a>
                                         <p class="text-xs text-gray-500">Main development list</p>
                                     </li>
                                     <li>
-                                        <a href="mailto:git-users@googlegroups.com" class="text-orange-600 hover:text-orange-500 text-sm">
+                                        <a href="mailto:git-users@googlegroups.com"
+                                            class="text-orange-600 hover:text-orange-500 text-sm">
                                             git-users@googlegroups.com
                                         </a>
                                         <p class="text-xs text-gray-500">User discussion list</p>
@@ -161,31 +190,36 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- IRC Channels -->
                     <div class="bg-white overflow-hidden shadow rounded-lg">
                         <div class="px-4 py-5 sm:p-6">
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 bg-orange-100 rounded-md p-3">
-                                    <svg class="h-6 w-6 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                    <svg class="h-6 w-6 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                     </svg>
                                 </div>
                                 <div class="ml-5">
                                     <h3 class="text-lg font-medium text-gray-900">IRC Channels</h3>
-                                    <p class="mt-1 text-sm text-gray-500">Real-time chat with Git developers and users.</p>
+                                    <p class="mt-1 text-sm text-gray-500">Real-time chat with Git developers and users.
+                                    </p>
                                 </div>
                             </div>
                             <div class="mt-6">
                                 <ul class="space-y-3">
                                     <li>
-                                        <a href="irc://irc.freenode.net/git" class="text-orange-600 hover:text-orange-500 text-sm">
+                                        <a href="irc://irc.freenode.net/git"
+                                            class="text-orange-600 hover:text-orange-500 text-sm">
                                             #git on Libera Chat
                                         </a>
                                         <p class="text-xs text-gray-500">User support channel</p>
                                     </li>
                                     <li>
-                                        <a href="irc://irc.freenode.net/git-devel" class="text-orange-600 hover:text-orange-500 text-sm">
+                                        <a href="irc://irc.freenode.net/git-devel"
+                                            class="text-orange-600 hover:text-orange-500 text-sm">
                                             #git-devel on Libera Chat
                                         </a>
                                         <p class="text-xs text-gray-500">Development discussion</p>
@@ -194,31 +228,36 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Forums & Q&A -->
                     <div class="bg-white overflow-hidden shadow rounded-lg">
                         <div class="px-4 py-5 sm:p-6">
                             <div class="flex items-center">
                                 <div class="flex-shrink-0 bg-orange-100 rounded-md p-3">
-                                    <svg class="h-6 w-6 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    <svg class="h-6 w-6 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </div>
                                 <div class="ml-5">
                                     <h3 class="text-lg font-medium text-gray-900">Forums & Q&A</h3>
-                                    <p class="mt-1 text-sm text-gray-500">Ask questions and get answers from the community.</p>
+                                    <p class="mt-1 text-sm text-gray-500">Ask questions and get answers from the
+                                        community.</p>
                                 </div>
                             </div>
                             <div class="mt-6">
                                 <ul class="space-y-3">
                                     <li>
-                                        <a href="https://stackoverflow.com/questions/tagged/git" class="text-orange-600 hover:text-orange-500 text-sm">
+                                        <a href="https://stackoverflow.com/questions/tagged/git"
+                                            class="text-orange-600 hover:text-orange-500 text-sm">
                                             Stack Overflow
                                         </a>
                                         <p class="text-xs text-gray-500">Questions tagged with 'git'</p>
                                     </li>
                                     <li>
-                                        <a href="https://www.reddit.com/r/git/" class="text-orange-600 hover:text-orange-500 text-sm">
+                                        <a href="https://www.reddit.com/r/git/"
+                                            class="text-orange-600 hover:text-orange-500 text-sm">
                                             Reddit r/git
                                         </a>
                                         <p class="text-xs text-gray-500">Git subreddit</p>
@@ -229,55 +268,72 @@
                     </div>
                 </div>
             </section>
-            
+
             <!-- Contributing Section -->
             <section id="contribute" class="mb-16">
                 <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Contributing to Git</h2>
-                
+
                 <div class="prose prose-orange prose-lg text-gray-500 mx-auto">
-                    <p>Git is an open source project and welcomes contributions from everyone. Here's how you can contribute:</p>
-                    
+                    <p>Git is an open source project and welcomes contributions from everyone. Here's how you can
+                        contribute:</p>
+
                     <div class="bg-gray-50 p-6 rounded-lg mb-8">
                         <h3 class="text-xl font-semibold text-gray-900 mb-4">Ways to Contribute</h3>
                         <ul class="space-y-4">
                             <li class="flex">
-                                <svg class="h-6 w-6 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <svg class="h-6 w-6 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <span><strong>Code:</strong> Fix bugs, implement new features, or improve performance.</span>
+                                <span><strong>Code:</strong> Fix bugs, implement new features, or improve
+                                    performance.</span>
                             </li>
                             <li class="flex">
-                                <svg class="h-6 w-6 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <svg class="h-6 w-6 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <span><strong>Documentation:</strong> Improve the official documentation, write tutorials, or create examples.</span>
+                                <span><strong>Documentation:</strong> Improve the official documentation, write
+                                    tutorials, or create examples.</span>
                             </li>
                             <li class="flex">
-                                <svg class="h-6 w-6 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <svg class="h-6 w-6 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <span><strong>Testing:</strong> Report bugs, test new features, or improve test coverage.</span>
+                                <span><strong>Testing:</strong> Report bugs, test new features, or improve test
+                                    coverage.</span>
                             </li>
                             <li class="flex">
-                                <svg class="h-6 w-6 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <svg class="h-6 w-6 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <span><strong>Translation:</strong> Help translate Git documentation and messages into other languages.</span>
+                                <span><strong>Translation:</strong> Help translate Git documentation and messages into
+                                    other languages.</span>
                             </li>
                             <li class="flex">
-                                <svg class="h-6 w-6 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>                                <span><strong>Support:</strong> Help other users by answering questions on forums and mailing lists.</span>
+                                <svg class="h-6 w-6 text-green-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg> <span><strong>Support:</strong> Help other users by answering questions on forums
+                                    and mailing lists.</span>
                             </li>
                         </ul>
                     </div>
-                    
+
                     <h3 class="text-xl font-semibold text-gray-900 mb-4">Getting Started with Contributing</h3>
-                    
+
                     <ol class="space-y-4 list-decimal pl-5">
                         <li>
                             <strong>Set up your development environment</strong>
-                            <p class="text-sm text-gray-500 mt-1">Clone the Git repository and follow the build instructions in the INSTALL file.</p>
+                            <p class="text-sm text-gray-500 mt-1">Clone the Git repository and follow the build
+                                instructions in the INSTALL file.</p>
                             <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mt-2"><code>git clone https://github.com/git/git.git
 cd git
 make configure
@@ -287,44 +343,54 @@ make install</code></pre>
                         </li>
                         <li>
                             <strong>Find an issue to work on</strong>
-                            <p class="text-sm text-gray-500 mt-1">Look for issues labeled "good first issue" or "help wanted" in the <a href="https://github.com/git/git/issues" class="text-orange-600 hover:text-orange-500">Git issue tracker</a>.</p>
+                            <p class="text-sm text-gray-500 mt-1">Look for issues labeled "good first issue" or "help
+                                wanted" in the <a href="https://github.com/git/git/issues"
+                                    class="text-orange-600 hover:text-orange-500">Git issue tracker</a>.</p>
                         </li>
                         <li>
                             <strong>Discuss your changes</strong>
-                            <p class="text-sm text-gray-500 mt-1">Before making significant changes, discuss your ideas on the Git mailing list to get feedback.</p>
+                            <p class="text-sm text-gray-500 mt-1">Before making significant changes, discuss your ideas
+                                on the Git mailing list to get feedback.</p>
                         </li>
                         <li>
                             <strong>Submit your contribution</strong>
-                            <p class="text-sm text-gray-500 mt-1">Git uses a mailing list-based workflow for contributions. Send your patches to the Git mailing list for review.</p>
+                            <p class="text-sm text-gray-500 mt-1">Git uses a mailing list-based workflow for
+                                contributions. Send your patches to the Git mailing list for review.</p>
                             <pre class="bg-gray-100 p-3 rounded-md overflow-x-auto mt-2"><code>git format-patch -M origin/master
 git send-email --to=git@vger.kernel.org *.patch</code></pre>
                         </li>
                     </ol>
-                    
+
                     <div class="bg-orange-50 border-l-4 border-orange-400 p-4 my-6">
                         <div class="flex">
                             <div class="flex-shrink-0">
-                                <svg class="h-5 w-5 text-orange-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                <svg class="h-5 w-5 text-orange-400" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2h-1V9a1 1 0 00-1-1z"
+                                        clip-rule="evenodd" />
                                 </svg>
                             </div>
                             <div class="ml-3">
                                 <p class="text-sm text-orange-700">
-                                    <strong>Note:</strong> Make sure to read the <a href="https://github.com/git/git/blob/master/Documentation/SubmittingPatches" class="font-medium underline">SubmittingPatches</a> document before contributing to understand Git's coding standards and submission process.
+                                    <strong>Note:</strong> Make sure to read the <a
+                                        href="https://github.com/git/git/blob/master/Documentation/SubmittingPatches"
+                                        class="font-medium underline">SubmittingPatches</a> document before contributing
+                                    to understand Git's coding standards and submission process.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            
+
             <!-- Get Help Section -->
             <section id="get-help" class="mb-16">
                 <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Getting Help with Git</h2>
-                
+
                 <div class="prose prose-orange prose-lg text-gray-500 mx-auto">
                     <p>Stuck with a Git problem? Here are the best ways to get help from the community:</p>
-                    
+
                     <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
                         <div class="bg-white overflow-hidden shadow rounded-lg">
                             <div class="px-4 py-5 sm:p-6">
@@ -358,50 +424,62 @@ git send-email --to=git@vger.kernel.org *.patch</code></pre>
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="bg-white overflow-hidden shadow rounded-lg">
                             <div class="px-4 py-5 sm:p-6">
                                 <h3 class="text-lg font-medium text-gray-900 mb-4">Support Resources</h3>
                                 <ul class="space-y-3">
                                     <li class="flex items-start">
-                                        <svg class="h-6 w-6 text-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        <svg class="h-6 w-6 text-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                         </svg>
                                         <div>
-                                            <a href="https://git-scm.com/doc" class="text-orange-600 hover:text-orange-500">
+                                            <a href="https://git-scm.com/doc"
+                                                class="text-orange-600 hover:text-orange-500">
                                                 Official Documentation
                                             </a>
                                             <p class="text-xs text-gray-500">Comprehensive reference and guides</p>
                                         </div>
                                     </li>
                                     <li class="flex items-start">
-                                        <svg class="h-6 w-6 text-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        <svg class="h-6 w-6 text-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
                                         <div>
-                                            <a href="https://stackoverflow.com/questions/tagged/git" class="text-orange-600 hover:text-orange-500">
+                                            <a href="https://stackoverflow.com/questions/tagged/git"
+                                                class="text-orange-600 hover:text-orange-500">
                                                 Stack Overflow
                                             </a>
                                             <p class="text-xs text-gray-500">Q&A for specific Git problems</p>
                                         </div>
                                     </li>
                                     <li class="flex items-start">
-                                        <svg class="h-6 w-6 text-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                        <svg class="h-6 w-6 text-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                                         </svg>
                                         <div>
-                                            <a href="irc://irc.libera.chat/git" class="text-orange-600 hover:text-orange-500">
+                                            <a href="irc://irc.libera.chat/git"
+                                                class="text-orange-600 hover:text-orange-500">
                                                 IRC Channel
                                             </a>
                                             <p class="text-xs text-gray-500">Real-time chat with Git experts</p>
                                         </div>
                                     </li>
                                     <li class="flex items-start">
-                                        <svg class="h-6 w-6 text-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                        <svg class="h-6 w-6 text-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                         </svg>
                                         <div>
-                                            <a href="mailto:git-users@googlegroups.com" class="text-orange-600 hover:text-orange-500">
+                                            <a href="mailto:git-users@googlegroups.com"
+                                                class="text-orange-600 hover:text-orange-500">
                                                 Mailing List
                                             </a>
                                             <p class="text-xs text-gray-500">Email-based community support</p>
@@ -411,7 +489,7 @@ git send-email --to=git@vger.kernel.org *.patch</code></pre>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="mt-8 bg-gray-50 p-6 rounded-lg">
                         <h3 class="text-lg font-medium text-gray-900 mb-4">How to Ask for Help Effectively</h3>
                         <ol class="list-decimal pl-5 space-y-2">
@@ -424,45 +502,59 @@ git send-email --to=git@vger.kernel.org *.patch</code></pre>
                     </div>
                 </div>
             </section>
-            
+
             <!-- Events Section -->
             <section class="mb-16">
                 <h2 class="text-3xl font-extrabold text-gray-900 mb-6">Git Community Events</h2>
-                
+
                 <div class="prose prose-orange prose-lg text-gray-500 mx-auto">
                     <p>Connect with Git users and developers at these upcoming events:</p>
-                    
+
                     <div class="mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-300">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Event</th>
-                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Date</th>
-                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Location</th>
-                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Type</th>
+                                    <th scope="col"
+                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                        Event</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        Date</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        Location</th>
+                                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        Type</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 bg-white">
                                 <tr>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Git Contributor Summit</td>
+                                    <td
+                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                        Git Contributor Summit</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">June 15, 2025</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Virtual</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Conference</td>
                                 </tr>
                                 <tr>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Git Workshop for Beginners</td>
+                                    <td
+                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                        Git Workshop for Beginners</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">July 8, 2025</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">New York, NY</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Workshop</td>
                                 </tr>
                                 <tr>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Git Merge 2025</td>
-                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">September 22-23, 2025</td>
+                                    <td
+                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                        Git Merge 2025</td>
+                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">September 22-23, 2025
+                                    </td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Berlin, Germany</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Conference</td>
                                 </tr>
                                 <tr>
-                                    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Advanced Git Techniques</td>
+                                    <td
+                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                                        Advanced Git Techniques</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">October 12, 2025</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">San Francisco, CA</td>
                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Workshop</td>
@@ -470,9 +562,10 @@ git send-email --to=git@vger.kernel.org *.patch</code></pre>
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div class="mt-6 text-center">
-                        <a href="#" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700">
+                        <a href="#"
+                            class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700">
                             View All Events
                         </a>
                     </div>
@@ -512,22 +605,35 @@ git send-email --to=git@vger.kernel.org *.patch</code></pre>
                 </div>
             </nav>
             <div class="mt-8 flex justify-center space-x-6">
-                <a href="#" class="text-gray-400 hover:text-gray-500">
+                <a href="https://github.com/GitCoder052023/GitX" class="text-gray-400 hover:text-gray-500">
                     <span class="sr-only">GitHub</span>
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                            clip-rule="evenodd" />
                     </svg>
                 </a>
-                <a href="#" class="text-gray-400 hover:text-gray-500">
+                <a href="https://x.com/HamdanKhu41893" class="text-gray-400 hover:text-gray-500">
                     <span class="sr-only">Twitter</span>
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                        <path
+                            d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                     </svg>
                 </a>
-                <a href="#" class="text-gray-400 hover:text-gray-500">
-                    <span class="sr-only">YouTube</span>
+                <a href="https://www.instagram.com/hamdankhubaib" class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">Instagram</span>
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/hamdan-khubaib-3046b8331"
+                    class="text-gray-400 hover:text-gray-500">
+                    <span class="sr-only">LinkedIn</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                     </svg>
                 </a>
             </div>
@@ -539,4 +645,5 @@ git send-email --to=git@vger.kernel.org *.patch</code></pre>
 
     <script src="/js/script.js"></script>
 </body>
+
 </html>
